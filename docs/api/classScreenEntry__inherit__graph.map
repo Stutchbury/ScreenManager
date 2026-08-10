@@ -1,0 +1,5 @@
+<map id="ScreenEntry" name="ScreenEntry">
+<area shape="rect" id="node1" title="A registered screen. Only ever accessed by ScreenManager." alt="" coords="145,5,240,32"/>
+<area shape="rect" id="node2" href="$classScreenEntryExternal.html" title="A registration entry for an External IManagedScreen." alt="" coords="5,80,180,107"/>
+<area shape="rect" id="node3" href="$classScreenEntryManaged.html" title="A registration entry for a Managed IManagedScreen." alt="" coords="205,80,383,107"/>
+</map>

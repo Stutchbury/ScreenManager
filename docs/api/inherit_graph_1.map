@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classScreenEntry.html" title="A registered screen. Only ever accessed by ScreenManager." alt="" coords="5,31,100,57"/>
+<area shape="rect" id="node2" href="$classScreenEntryExternal.html" title="A registration entry for an External IManagedScreen." alt="" coords="150,5,325,32"/>
+<area shape="rect" id="node3" href="$classScreenEntryManaged.html" title="A registration entry for a Managed IManagedScreen." alt="" coords="148,56,327,83"/>
+</map>
