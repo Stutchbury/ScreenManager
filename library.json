@@ -1,0 +1,24 @@
+{
+  "name": "ScreenManager",
+  "version": "1.0.0",
+  "description": "A lightweight C++ library for managing application screens, navigation, transitions and display timing. It is platform, framework and GFX agnostic.",
+  "keywords": ["screen manager","screen management","screen navigation","screen transitions","screen routing","state management","UI","user interface","embedded","Arduino","ESP8266","ESP32","Teensy","STM32" ],
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/Stutchbury/ScreenManager.git"
+  },
+  "authors":
+  [
+    {
+      "name": "Philip Fletcher",
+      "email": "philip.fletcher@stutchbury.com",
+      "url": "https://stutchbury.com",
+      "maintainer": true
+    }
+  ],
+  "license": "GPL-2.0",
+  "homepage": "https://stutchbury.com/s/ScreenManager",
+  "frameworks": "*",
+  "platforms": "*"
+}
