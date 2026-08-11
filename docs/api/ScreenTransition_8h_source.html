@@ -54,30 +54,30 @@ $(function() {
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">enum class</span> TransitionIntentType : uint8_t { </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    None, </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    Auto, </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    Next, </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    Back, </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    Init, </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    Force </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structTransitionIntent.html">   28</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structTransitionIntent.html">TransitionIntent</a> {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structTransitionIntent.html#ab31c61391b87046570948df703e68dd2">   33</a></span>    <span class="keyword">constexpr</span> <a class="code hl_function" href="structTransitionIntent.html#ab31c61391b87046570948df703e68dd2">TransitionIntent</a>( TransitionIntentType t = TransitionIntentType::None, uint8_t r = 0)</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        : <a class="code hl_variable" href="structTransitionIntent.html#abef293e717f9cec76860b4b7e8a298d0">type</a>(t), </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>          <a class="code hl_variable" href="structTransitionIntent.html#af13fa2250f664c80ad48bc3d5c56eab7">requested</a>(r) </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        {}</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">enum class</span> TransitionIntentType : uint8_t { </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    None, </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    Auto, </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    Next, </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    Back, </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    Init, </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    Force </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structTransitionIntent.html">   24</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structTransitionIntent.html">TransitionIntent</a> {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structTransitionIntent.html#ab31c61391b87046570948df703e68dd2">   29</a></span>    <span class="keyword">constexpr</span> <a class="code hl_function" href="structTransitionIntent.html#ab31c61391b87046570948df703e68dd2">TransitionIntent</a>( TransitionIntentType t = TransitionIntentType::None, uint8_t r = 0)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        : <a class="code hl_variable" href="structTransitionIntent.html#abef293e717f9cec76860b4b7e8a298d0">type</a>(t), </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>          <a class="code hl_variable" href="structTransitionIntent.html#af13fa2250f664c80ad48bc3d5c56eab7">requested</a>(r) </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        {}</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structTransitionIntent.html#abef293e717f9cec76860b4b7e8a298d0">   34</a></span>    TransitionIntentType <a class="code hl_variable" href="structTransitionIntent.html#abef293e717f9cec76860b4b7e8a298d0">type</a>; </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structTransitionIntent.html#af13fa2250f664c80ad48bc3d5c56eab7">   35</a></span>    uint8_t <a class="code hl_variable" href="structTransitionIntent.html#af13fa2250f664c80ad48bc3d5c56eab7">requested</a>;  </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structTransitionIntent.html#abef293e717f9cec76860b4b7e8a298d0">   38</a></span>    TransitionIntentType <a class="code hl_variable" href="structTransitionIntent.html#abef293e717f9cec76860b4b7e8a298d0">type</a>; </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structTransitionIntent.html#af13fa2250f664c80ad48bc3d5c56eab7">   39</a></span>    uint8_t <a class="code hl_variable" href="structTransitionIntent.html#af13fa2250f664c80ad48bc3d5c56eab7">requested</a>;  </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>};</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructTransitionIntent_html"><div class="ttname"><a href="structTransitionIntent.html">TransitionIntent</a></div><div class="ttdoc">The type of transition and an optional requested screen name.</div><div class="ttdef"><b>Definition:</b> ScreenTransition.h:28</div></div>
-<div class="ttc" id="astructTransitionIntent_html_ab31c61391b87046570948df703e68dd2"><div class="ttname"><a href="structTransitionIntent.html#ab31c61391b87046570948df703e68dd2">TransitionIntent::TransitionIntent</a></div><div class="ttdeci">constexpr TransitionIntent(TransitionIntentType t=TransitionIntentType::None, uint8_t r=0)</div><div class="ttdoc">Must have a contructor to use defaults in C++11 because 'aggregate` _O_/.</div><div class="ttdef"><b>Definition:</b> ScreenTransition.h:33</div></div>
-<div class="ttc" id="astructTransitionIntent_html_abef293e717f9cec76860b4b7e8a298d0"><div class="ttname"><a href="structTransitionIntent.html#abef293e717f9cec76860b4b7e8a298d0">TransitionIntent::type</a></div><div class="ttdeci">TransitionIntentType type</div><div class="ttdoc">The requested transition type.</div><div class="ttdef"><b>Definition:</b> ScreenTransition.h:38</div></div>
-<div class="ttc" id="astructTransitionIntent_html_af13fa2250f664c80ad48bc3d5c56eab7"><div class="ttname"><a href="structTransitionIntent.html#af13fa2250f664c80ad48bc3d5c56eab7">TransitionIntent::requested</a></div><div class="ttdeci">uint8_t requested</div><div class="ttdoc">Explicit requested ScreenId.</div><div class="ttdef"><b>Definition:</b> ScreenTransition.h:39</div></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="astructTransitionIntent_html"><div class="ttname"><a href="structTransitionIntent.html">TransitionIntent</a></div><div class="ttdoc">The type of transition and an optional requested screen name.</div><div class="ttdef"><b>Definition:</b> ScreenTransition.h:24</div></div>
+<div class="ttc" id="astructTransitionIntent_html_ab31c61391b87046570948df703e68dd2"><div class="ttname"><a href="structTransitionIntent.html#ab31c61391b87046570948df703e68dd2">TransitionIntent::TransitionIntent</a></div><div class="ttdeci">constexpr TransitionIntent(TransitionIntentType t=TransitionIntentType::None, uint8_t r=0)</div><div class="ttdoc">Must have a contructor to use defaults in C++11 because 'aggregate` _O_/.</div><div class="ttdef"><b>Definition:</b> ScreenTransition.h:29</div></div>
+<div class="ttc" id="astructTransitionIntent_html_abef293e717f9cec76860b4b7e8a298d0"><div class="ttname"><a href="structTransitionIntent.html#abef293e717f9cec76860b4b7e8a298d0">TransitionIntent::type</a></div><div class="ttdeci">TransitionIntentType type</div><div class="ttdoc">The requested transition type.</div><div class="ttdef"><b>Definition:</b> ScreenTransition.h:34</div></div>
+<div class="ttc" id="astructTransitionIntent_html_af13fa2250f664c80ad48bc3d5c56eab7"><div class="ttname"><a href="structTransitionIntent.html#af13fa2250f664c80ad48bc3d5c56eab7">TransitionIntent::requested</a></div><div class="ttdeci">uint8_t requested</div><div class="ttdoc">Explicit requested ScreenId.</div><div class="ttdef"><b>Definition:</b> ScreenTransition.h:35</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

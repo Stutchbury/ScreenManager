@@ -70,7 +70,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr
 <tr class="memdesc:a57b0ecb6258b6abe1bcfa08b9241f128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a managed screen (<a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> will create and delete the screen)  <a href="classScreenManager.html#a57b0ecb6258b6abe1bcfa08b9241f128">More...</a><br /></td></tr>
 <tr class="separator:a57b0ecb6258b6abe1bcfa08b9241f128"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2514e73b594a42f77ce215e4535a3fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#ae2514e73b594a42f77ce215e4535a3fd">setFps</a> (uint8_t fps)</td></tr>
-<tr class="memdesc:ae2514e73b594a42f77ce215e4535a3fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the FPS (Frames Per Second) for draw() to be called.  <a href="classScreenManager.html#ae2514e73b594a42f77ce215e4535a3fd">More...</a><br /></td></tr>
+<tr class="memdesc:ae2514e73b594a42f77ce215e4535a3fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the FPS (Frames Per Second) for draw() to be called (default is 10)  <a href="classScreenManager.html#ae2514e73b594a42f77ce215e4535a3fd">More...</a><br /></td></tr>
 <tr class="separator:ae2514e73b594a42f77ce215e4535a3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25c2a72020133eb39fd9c9739cf9b0cd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a25c2a72020133eb39fd9c9739cf9b0cd">getFps</a> ()</td></tr>
 <tr class="memdesc:a25c2a72020133eb39fd9c9739cf9b0cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the currently set Fps.  <a href="classScreenManager.html#a25c2a72020133eb39fd9c9739cf9b0cd">More...</a><br /></td></tr>
@@ -460,10 +460,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Set the FPS (Frames Per Second) for draw() to be called. </p>
+<p>Set the FPS (Frames Per Second) for draw() to be called (default is 10) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fps</td><td></td></tr>
+    <tr><td class="paramname">fps</td><td>1-255 FPS. 0 means <code><a class="el" href="classIManagedScreen.html#a0ad4d18436333798f0dcb2330e68b0c1" title="Called at defined FPS only whan screen is active.">IManagedScreen::draw()</a></code> will never be called. </td></tr>
   </table>
   </dd>
 </dl>
@@ -520,7 +520,7 @@ false Initial screen not set (is not a registered screen) </dd></dl>
 <p >Receives a timer value - in the Arduino Framework this would be <code>millis()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nowMs</td><td>A timer value used to determine when <code>draw()</code> is called (based on the <code><a class="el" href="classScreenManager.html#ae2514e73b594a42f77ce215e4535a3fd" title="Set the FPS (Frames Per Second) for draw() to be called.">setFps()</a></code>) </td></tr>
+    <tr><td class="paramname">nowMs</td><td>A timer value used to determine when <code>draw()</code> is called (based on the <code><a class="el" href="classScreenManager.html#ae2514e73b594a42f77ce215e4535a3fd" title="Set the FPS (Frames Per Second) for draw() to be called (default is 10)">setFps()</a></code>) </td></tr>
   </table>
   </dd>
 </dl>

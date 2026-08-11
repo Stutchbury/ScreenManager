@@ -50,6 +50,7 @@ ScreenManager</h1>
 <blockquote class="doxtable">
 <p >&zwj;<b><a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> is GFX agnostic.</b> It has no knowledge of the display, graphics library, widgets, or rendering mechanism used by an application. A Screen is responsible for its own rendering if required. <a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a>'s only involvement in display rendering is determining <em>when</em> the current screen's <code>draw()</code> method is called, based on the configured refresh rate. This allows the same <a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> to be used with any display or graphics library or with screens that do not render anything themselves. </p>
 </blockquote>
+<p>&gt;The registered Routers provide a powerful way to manage transitions between screens or create history trees &amp; wizards.</p>
 <p >The <code><a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a></code>:</p>
 <ul>
 <li>is responsible for registering screens and orchestrating the transition from one screen to another via <code>requestScreen()</code> and optional Router(s).</li>
@@ -63,7 +64,7 @@ Registering Screens</h2>
 <hr  />
  <h1><a class="anchor" id="autotoc_md5"></a>
 Screens</h1>
-<p >All app screens must be derived from <code><a class="el" href="classIManagedScreen.html" title="Interface for a screen that can be managed by ScreenManager. A &#39;Screen&#39; is a combination of the &#39;View...">IManagedScreen</a></code> and managed screens must have a default constructor.</p>
+<p >All app screens must be implement/derived from the <code><a class="el" href="classIManagedScreen.html" title="Interface for a screen that can be managed by ScreenManager. A &#39;Screen&#39; is a combination of the &#39;View...">IManagedScreen</a></code> interface and managed screens must have a default constructor.</p>
 <hr  />
 <h2><a class="anchor" id="autotoc_md7"></a>
 ScreenId</h2>
@@ -156,7 +157,7 @@ A Screen's Access to Your App</h2>
 <div class="line">    if (!_app)</div>
 <div class="line">        _app = &amp;getApp();</div>
 <div class="line">}</div>
-</div><!-- fragment --><p >I think I prefer the latter and highly recommend creating a <code>BasseAppScreen</code> to encapsulate all the common behaviour.</p>
+</div><!-- fragment --><p >I think I prefer the latter and highly recommend creating a <code>BaseAppScreen</code> to encapsulate all the common behaviour.</p>
 <hr  />
 <h1><a class="anchor" id="autotoc_md19"></a>
 Routers</h1>
@@ -164,7 +165,7 @@ Routers</h1>
 <p >&zwj;*** <b>Routers are entirely optional.</b> *** </p>
 </blockquote>
 <p>If your app only requires navigation from one screen to another, then calling <code>myScreenManager.requestScreen(nextScreenId)</code> will do just that - no routers required. By default this will only fail if the requested screen has not been registered or current screen returns <code>false</code> from <code>end()</code> (to force a transition use <code>myScreenManager.requestScreen({TransitionIntentType::Force, nextScreenId});</code>)</p>
-<p >However, it is often necessary to validate the transitin from one screen to another and/or to redirect. This <em>can</em> be done within a screen itself but by centralising app logic into one or more routers, it becomes DRYer and more maintainable. Screens do not need to be aware of each other.</p>
+<p >However, it is often necessary to validate the transition from one screen to another and/or to redirect. This <em>can</em> be done within a screen itself but by centralising app logic into one or more routers, it becomes DRYer and more maintainable. Screens do not need to be aware of each other.</p>
 <p >Routers belong to the <em>app</em>. <code><a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a></code> doesn't care what they do internally, it only acts on the return value from <code>resolveScreen()</code>.</p>
 <hr  />
 <h2><a class="anchor" id="autotoc_md21"></a>
@@ -180,7 +181,7 @@ Router 'Rules'</h2>
 <hr  />
  <h2><a class="anchor" id="autotoc_md23"></a>
 Transition Intents</h2>
-<p >The simplest intent is just to just pass a <code>ScreenId</code> to <code>resuestScreen()</code> but the <code>ScreenTransitionType</code> can be used <em>without</em> a <code>ScreenId</code> to delegate resposiblity for resolving which screen will be the next to Router(s).</p>
+<p >The simplest intent is just to just pass a <code>ScreenId</code> to <code>requestScreen()</code> but the <code>ScreenTransitionType</code> can be used <em>without</em> a <code>ScreenId</code> to delegate resposiblity for resolving which screen will be the next to Router(s).</p>
 <ul>
 <li><b>None</b>: No transition, stay on current screen. Can be used to 'clear' a pending intent (before <code>myScreenManger.update()</code> is called).</li>
 <li><b>Auto</b>: The Router decides which screen to transition to (or not).</li>
