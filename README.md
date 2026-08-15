@@ -14,7 +14,7 @@ So what *does* it do? ScreenManager manages the lifecycle and activation of scre
 
 ## Features
 
-* Register screens with a simple numeric `ScreenId`.
+* Register screens with a simple numeric `ScreenId` (must be > 0)
 * Transition between screens by ID or transition intent (Next, Prev etc).
 * Optional screen routers for navigation, validation and redirection.
 * Support for both application-owned and ScreenManager-owned screens.
@@ -152,25 +152,25 @@ HomeScreen home;
 StatusScreen status;
 
 void setup() {
-    manager.registerScreen(HOME_SCREEN, &home);
-    manager.registerScreen(STATUS_SCREEN, &status);
-    manager.registerScreen<SettingsScreen>(SETTINGS_SCREEN);
+    manager.registerScreen(HOME_SCREEN, &home); //ScreenId must not be 0
+    manager.registerScreen(STATUS_SCREEN, &status); //ScreenId must not be 0
+    manager.registerScreen<SettingsScreen>(SETTINGS_SCREEN); //ScreenId must not be 0
 
     manager.begin();
 }
 
 void loop() {
-    manager.update(millis());
+    manager.update(millis()); //Must be called before accessing `getCurrent()`
 }
 ```
 
-Navigate directly to another screen:
+Navigate directly to another screen (router is optional):
 
 ```cpp
 manager.requestScreen(SETTINGS_SCREEN);
 ```
 
-Or request a transition by intent:
+Or request a transition by intent (requires a router to resolve the intent):
 
 ```cpp
 manager.requestScreen({ TransitionIntentType::Back });
