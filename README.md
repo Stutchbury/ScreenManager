@@ -52,6 +52,7 @@ ScreenManager deliberately places no restrictions on how a Screen is rendered or
 
 Although the library has been written with displayed Screens in mind, it can also be used as *without* a display as a very powerful *context* manager.
 
+
 ---
 
 ## Screen Ownership
@@ -86,6 +87,23 @@ manager.registerScreen<KeyboardScreen>(KEYBOARD_SCREEN);
 Managed screens are created automatically when required and are destroyed when longer active. They must have a default constructor.
 
 This allows rarely used screens with a larger memory footprint to consume RAM only while active.
+
+---
+
+## Screen Lifecycle
+
+The `IManagedScreen` interface specifies the lifecycle methods:
+
+- **`begin()`**: For a managed screen will be called after `ScreenManager` creates it. For external screens will be called from `ScreenManager::begin()` or when registerd if that is after ScreenManager has begun.
+
+- **`start()`**: Called when the Screen become current. Used to setup widgets etc and to read current state.
+
+- **`draw()`**: When the current Screen, the `draw()` method is called repeatedly from `ScreenManager::update()` at the configured refresh rate, allowing the screen to update its visible state independently of the application's main loop.
+
+- **`end()`**: A screen may prevent a transition by returning `false` from `end()`. Forced transitions still call the current screen's  `end()` method, but ignore the return value.
+
+
+Before any transition takes place, optional registered Screen Routers are given the opportunity to examine the requested transition. A router may allow the transition to proceed unchanged, redirect it to a different screen, or prevent it altogether, enabling application-specific navigation policies without coupling individual screens together.
 
 ---
 
