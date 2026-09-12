@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 
+using ScreenId = uint8_t;
 
 /**
  * @brief Types of screen transition
@@ -18,21 +19,31 @@ enum class TransitionIntentType : uint8_t {
 };
 
 /**
- * @brief The type of transition and an optional requested screen name
+ * @brief The type of transition and an optional requested ScreenId
  * 
  */
 struct TransitionIntent {
-     /**
-      * @brief Must have a contructor to use defaults in C++11 because 'aggregate` \_O_/
-      * 
-      */
-    constexpr TransitionIntent( TransitionIntentType t = TransitionIntentType::None, uint8_t r = 0)
-        : type(t), 
-          requested(r) 
+    /**
+     * @brief Must have a constructor to use defaults in C++11 because 'aggregate` \_O_/
+     * 
+     * @param TransitionIntentType Transition intent types are:
+        -  `None`  - No transition, stay on current screen
+        -  `Auto`  - The IScreenRouter decides which screen to transition to.
+        -  `Next`  - The IScreenRouter can accept a provided screen name or redirect
+        -  `Back`  - The IScreenRouter determines what the previous screen should be
+        -  `Init`  - Only the first IScreenRouter can resolve this.
+        -  `Force` - Force a screen change. Current screen's end() will be called but the result ignored. Use with caution.
+     * 
+     * @param ScreenId - An explicitly requested `ScreenId` (alias for a `uint8_t`)
+     */
+    // cppcheck-suppress noExplicitConstructor ; because I want to use `= {}`
+    constexpr TransitionIntent( TransitionIntentType intentType = TransitionIntentType::None, uint8_t ScreenId = 0)
+        : type(intentType), 
+          requested(ScreenId) 
         {}
 
     TransitionIntentType type; ///< The requested transition type
-    uint8_t requested;  ///< Explicit requested ScreenId
+    ScreenId requested;  ///< Explicit requested ScreenId
 };
 
 #endif
