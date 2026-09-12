@@ -23,7 +23,6 @@ void ScreenManager::begin() {
             entry->instance->begin();
         }
     }
-    //pendingIntent = { TransitionIntentType::Init };
     requestScreen({TransitionIntentType::Init});
 }
 
@@ -37,28 +36,17 @@ void ScreenManager::update(uint32_t nowMs) {
     if (current) current->instance->draw();
 }
 
-
-// IManagedScreen* ScreenManager::getScreen(ScreenId id) {
-//     for (ScreenEntry* entry = firstScreenEntry; entry; entry = entry->nextScreenEntry) {
-//         if ( entry->id == id ) {
-//             entry->load();
-//             return entry->instance;
-//         }
-//     }
-//     return nullptr;
-// }
-
-bool ScreenManager::isCurrent(const ScreenId id) {
+bool ScreenManager::isCurrent(const ScreenId id) const {
     if ( !current ) return false;
     return ( id == current->id );
 }
 
-bool ScreenManager::isPrevious(ScreenId id) {
+bool ScreenManager::isPrevious(const ScreenId id) const {
     if ( !previous ) return false;
     return ( id == previous->id );
 }
 
-IManagedScreen* ScreenManager::getCurrent() {
+IManagedScreen* ScreenManager::getCurrent() const {
     if (!current) {
         return nullptr; 
 
@@ -67,14 +55,14 @@ IManagedScreen* ScreenManager::getCurrent() {
 }
 
 
-ScreenId ScreenManager::getPreviousId() {
+ScreenId ScreenManager::getPreviousId() const {
     if (!previous) return 0; 
     return previous->id;
 }
 
 
 
-bool ScreenManager::haveScreen(ScreenId id) {
+bool ScreenManager::haveScreen(const ScreenId id) const {
     for (ScreenEntry* entry = firstScreenEntry; entry; entry = entry->nextScreenEntry) {
         if ( entry->id == id ) {
             return true;
@@ -102,7 +90,7 @@ void ScreenManager::addRouter(ScreenRouter* router) {
     lastRouter = router;
 }
 
-bool ScreenManager::setInitialScreen(ScreenId id) {
+bool ScreenManager::setInitialScreen(const ScreenId id) {
     if ( !haveScreen(id ) ) return false;
     initialScreenId = id;
     return true;
@@ -110,7 +98,7 @@ bool ScreenManager::setInitialScreen(ScreenId id) {
 
 
 
-ScreenEntry* ScreenManager::getScreenEntry(ScreenId id) {
+ScreenEntry* ScreenManager::getScreenEntry(const ScreenId id) const {
     for (ScreenEntry* entry = firstScreenEntry; entry; entry = entry->nextScreenEntry) {
         if ( entry->id == id ) {
             return entry;

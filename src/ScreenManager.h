@@ -2,6 +2,7 @@
 #ifndef SCREEN_MANAGER_H
 #define SCREEN_MANAGER_H
 
+#include <stdint.h>
 #include "ScreenRouter.h"
 #include "ScreenEntry.h"
 #include "ScreenTransition.h"
@@ -29,25 +30,24 @@ public:
      * @brief Called from your `loop()`. Checks if a screen transition has been requested and calls current screen's draw() at set FPS.
      * 
      * @details Receives a timer value - in the Arduino Framework this would be `millis()`.
+     * > Must be called before trying to access `currentScreen()`
      * 
      * @param nowMs A timer value used to determine when `draw()` is called (based on the `setFps()`)
      */
     void update(uint32_t nowMs);
 
     /**
-     * @brief Register a screen created externally
+     * @brief Register a screen created externally with a unique ID greater than 0.
      * 
-     * @details Usage: `screenManager.registerScreen(&home, 11);`
+     * @details Usage: `screenManager.registerScreen(11, &home);`
      * 
-     * @tparam T 
+     * @param id A ScreenId (`uint8_t`) used to identify this screen. **Must be > 0**
      * @param screen 
-     * @param id A uint8_t used to identify this screen
      */
-    template<typename T>
-    bool registerScreen(ScreenId id, T* screen ) {
-        if ( id == 0 ) return false;
+    bool registerScreen(ScreenId id, IManagedScreen* screen ) {
+        if ( id == 0  || !screen ) return false;
         if ( haveScreen(id)) return false;
-        auto* entry = new ScreenEntryExternal<T>(screen, id);
+        auto* entry = new ScreenEntryExternal(screen, id);
         entry->instance = screen;
         addScreenEntry(entry);
         if ( begun ) screen->begin();
@@ -55,12 +55,12 @@ public:
     }
 
     /**
-     * @brief Register a managed screen (ScreenManager will create and delete the screen)
+     * @brief Register a managed screen  with a unique ID greater than 0 (ScreenManager will create and delete the screen)
      * 
      * @details Usage: `screenManager.registerScreen<SettingsScreen>(20);`
      * 
      * @tparam T 
-     * @param id A uint8_t used to identify this screen
+     * @param id A `uint8_t` used to identify this screen.  **Must be > 0**
      */
     template<typename T>
     bool registerScreen(ScreenId id) {
@@ -74,13 +74,14 @@ public:
     /**
      * @brief Set the FPS (Frames Per Second) for draw() to be called (default is 10)
      * 
-     * @param fps 1-255 FPS. 0 means `IManagedScreen::draw()` will never be called.
+     * @param fps 1-250 FPS. 0 means `IManagedScreen::draw()` will never be called.
      */
     void setFps(uint8_t fps) {
         if ( fps == 0 ) {
             displayRefreshMs = 0;
         } else {
             displayRefreshMs = (uint16_t)(1000/fps);
+            displayRefreshMs = (displayRefreshMs < 4) ? 4 : displayRefreshMs; //Ensure getFps doesn't overflow
         }
     }
 
@@ -89,19 +90,10 @@ public:
      * 
      * @return uint8_t 
      */
-    uint8_t getFps() {
-        return (uint8_t)(displayRefreshMs/1000);
+    uint8_t getFps() const {
+        if ( displayRefreshMs == 0 ) return 0;
+        return (uint8_t)(1000/displayRefreshMs);
     }
-
-
-    // /**
-    //  * @brief Get a Screen object (not necessarily the current one)
-    //  * 
-    //  * @param id The id used to register the screen
-    //  * @return IManagedScreen*  or nullptr if screen doesn't exist
-    //  */
-    // IManagedScreen* getScreen(ScreenId id);
-
 
     /**
      * @brief Return true if passed id is that of the current screen
@@ -110,7 +102,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool isCurrent(const ScreenId id);
+    bool isCurrent(const ScreenId id) const;
 
     /**
      * @brief Return true if passed id is that of the previous screen
@@ -119,14 +111,14 @@ public:
      * @return true 
      * @return false 
      */
-    bool isPrevious(ScreenId id);
+    bool isPrevious(const ScreenId id) const;
 
     /**
-     * @brief Get the current screen
+     * @brief Get the current screen or `nullptr`. ScreenManager::update()` must be called before the initial screen becomes current.
      * 
      * @return IManagedScreen* or nullptr
      */
-    IManagedScreen* getCurrent();
+    IManagedScreen* getCurrent() const;
 
 
     /**
@@ -134,7 +126,7 @@ public:
      * 
      * @return Previous screen ID or 0
      */
-    ScreenId getPreviousId();
+    ScreenId getPreviousId() const;
 
     /**
      * @brief Check if a screen has been added and exists.
@@ -143,7 +135,7 @@ public:
      * @return true Screen is available to get.
      * @return false Screen does not exist/
      */
-    bool haveScreen(ScreenId id);
+    bool haveScreen(const ScreenId id) const;
 
     /**
      * @brief Request a transition to a named screen. 
@@ -179,7 +171,7 @@ public:
      * @return true Initial screen has been set
      * @return false Initial screen not set (is not a registered screen)
      */
-    bool setInitialScreen(ScreenId id);
+    bool setInitialScreen(const ScreenId id);
 
 
     private:    
@@ -189,7 +181,7 @@ public:
      * @param id The id used to register the screen
      * @return ScreenEntry*  or nullptr if screen hasn't been registered
      */
-    ScreenEntry* getScreenEntry(ScreenId id);
+    ScreenEntry* getScreenEntry(const ScreenId id) const;
 
 
 
