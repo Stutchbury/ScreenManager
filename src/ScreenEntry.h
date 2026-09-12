@@ -45,9 +45,7 @@ class ScreenEntry {
 /**
  * @brief A registration entry for an External IManagedScreen
  * 
- * @tparam T 
  */
-template<typename T>
 class ScreenEntryExternal final : public ScreenEntry {
     friend class ScreenManager;
     
@@ -59,7 +57,7 @@ class ScreenEntryExternal final : public ScreenEntry {
      * @param screen 
      * @param id 
      */
-    explicit ScreenEntryExternal(T* screen, ScreenId id) {
+    explicit ScreenEntryExternal(IManagedScreen* screen, ScreenId id) {
         this->instance = screen;
         this->id = id;
         this->isManaged = false;
@@ -90,7 +88,6 @@ class ScreenEntryManaged final : public ScreenEntry {
      * 
      * @param id 
      */
-    //explicit ScreenEntryManaged<T>(ScreenId id) { 
     explicit ScreenEntryManaged(ScreenId id) { 
         this->id = id;
         this->isManaged = true;
