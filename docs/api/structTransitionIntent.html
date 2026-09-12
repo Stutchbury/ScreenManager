@@ -19,7 +19,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="fletch-logo64x64.png"/></td>
   <td id="projectalign">
-   <div id="projectname">ScreenManager<span id="projectnumber">&#160;v1.0.0</span>
+   <div id="projectname">ScreenManager<span id="projectnumber">&#160;v1.1.0</span>
    </div>
    <div id="projectbrief">A lightweight C++ library for managing application screens, navigation, transitions and display timing.</div>
   </td>
@@ -49,16 +49,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
-<div class="textblock"><p >The type of transition and an optional requested screen name. </p>
+<div class="textblock"><p >The type of transition and an optional requested ScreenId. </p>
 </div>
 <p><code>#include &lt;<a class="el" href="ScreenTransition_8h_source.html">ScreenTransition.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab31c61391b87046570948df703e68dd2"><td class="memItemLeft" align="right" valign="top"><a id="ab31c61391b87046570948df703e68dd2" name="ab31c61391b87046570948df703e68dd2"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>TransitionIntent</b> (TransitionIntentType t=TransitionIntentType::None, uint8_t r=0)</td></tr>
-<tr class="memdesc:ab31c61391b87046570948df703e68dd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Must have a contructor to use defaults in C++11 because 'aggregate` _O_/. <br /></td></tr>
-<tr class="separator:ab31c61391b87046570948df703e68dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7f833fad06223531ec18898fc3d6a80"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTransitionIntent.html#aa7f833fad06223531ec18898fc3d6a80">TransitionIntent</a> (TransitionIntentType intentType=TransitionIntentType::None, uint8_t ScreenId=0)</td></tr>
+<tr class="memdesc:aa7f833fad06223531ec18898fc3d6a80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Must have a constructor to use defaults in C++11 because 'aggregate` _O_/.  <a href="structTransitionIntent.html#aa7f833fad06223531ec18898fc3d6a80">More...</a><br /></td></tr>
+<tr class="separator:aa7f833fad06223531ec18898fc3d6a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -66,11 +65,65 @@ Public Attributes</h2></td></tr>
 TransitionIntentType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="memdesc:abef293e717f9cec76860b4b7e8a298d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The requested transition type. <br /></td></tr>
 <tr class="separator:abef293e717f9cec76860b4b7e8a298d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af13fa2250f664c80ad48bc3d5c56eab7"><td class="memItemLeft" align="right" valign="top"><a id="af13fa2250f664c80ad48bc3d5c56eab7" name="af13fa2250f664c80ad48bc3d5c56eab7"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>requested</b></td></tr>
-<tr class="memdesc:af13fa2250f664c80ad48bc3d5c56eab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Explicit requested ScreenId. <br /></td></tr>
-<tr class="separator:af13fa2250f664c80ad48bc3d5c56eab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0addbd6f420bcc400086d4804d947894"><td class="memItemLeft" align="right" valign="top"><a id="a0addbd6f420bcc400086d4804d947894" name="a0addbd6f420bcc400086d4804d947894"></a>
+ScreenId&#160;</td><td class="memItemRight" valign="bottom"><b>requested</b></td></tr>
+<tr class="memdesc:a0addbd6f420bcc400086d4804d947894"><td class="mdescLeft">&#160;</td><td class="mdescRight">Explicit requested ScreenId. <br /></td></tr>
+<tr class="separator:a0addbd6f420bcc400086d4804d947894"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa7f833fad06223531ec18898fc3d6a80" name="aa7f833fad06223531ec18898fc3d6a80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7f833fad06223531ec18898fc3d6a80">&#9670;&nbsp;</a></span>TransitionIntent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr TransitionIntent::TransitionIntent </td>
+          <td>(</td>
+          <td class="paramtype">TransitionIntentType&#160;</td>
+          <td class="paramname"><em>intentType</em> = <code>TransitionIntentType::None</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ScreenId</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Must have a constructor to use defaults in C++11 because 'aggregate` _O_/. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">TransitionIntentType</td><td>Transition intent types are:<ul>
+<li><code>None</code> - No transition, stay on current screen</li>
+<li><code>Auto</code> - The IScreenRouter decides which screen to transition to.</li>
+<li><code>Next</code> - The IScreenRouter can accept a provided screen name or redirect</li>
+<li><code>Back</code> - The IScreenRouter determines what the previous screen should be</li>
+<li><code>Init</code> - Only the first IScreenRouter can resolve this.</li>
+<li><code>Force</code> - Force a screen change. Current screen's end() will be called but the result ignored. Use with caution.</li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">ScreenId</td><td>- An explicitly requested <code>ScreenId</code> (alias for a <code>uint8_t</code>) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="ScreenTransition_8h_source.html">ScreenTransition.h</a></li>
 </ul>

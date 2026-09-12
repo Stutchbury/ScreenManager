@@ -19,7 +19,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="fletch-logo64x64.png"/></td>
   <td id="projectalign">
-   <div id="projectname">ScreenManager<span id="projectnumber">&#160;v1.0.0</span>
+   <div id="projectname">ScreenManager<span id="projectnumber">&#160;v1.1.0</span>
    </div>
    <div id="projectbrief">A lightweight C++ library for managing application screens, navigation, transitions and display timing.</div>
   </td>
@@ -44,14 +44,16 @@ $(function() {
   <div class="headertitle"><div class="title">App Developer Notes for <a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_docs_app_developer_notes"></a> Please see main <a href="https://github.com/Stutchbury/ScreenManager/README.md">README.md</a> for a functional overview.</p>
+<div class="textblock"><p ><a class="anchor" id="md_docs_app_developer_notes"></a> Please see main <a href="https://github.com/Stutchbury/ScreenManager/blob/main/README.md">README.md</a> for a functional overview.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 ScreenManager</h1>
 <blockquote class="doxtable">
-<p >&zwj;<b><a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> is GFX agnostic.</b> It has no knowledge of the display, graphics library, widgets, or rendering mechanism used by an application. A Screen is responsible for its own rendering if required. <a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a>'s only involvement in display rendering is determining <em>when</em> the current screen's <code>draw()</code> method is called, based on the configured refresh rate. This allows the same <a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> to be used with any display or graphics library or with screens that do not render anything themselves. </p>
+<p >&zwj;<b><a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> is GFX agnostic.</b> It has no knowledge of the display, graphics library, widgets, or rendering mechanism used by an application. A Screen is responsible for its own rendering if required. <a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a>'s only involvement in display rendering is determining <em>when</em> the current screen's <code>draw()</code> method is called, based on the configured refresh rate. This allows <a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> to be used with any display or graphics library or with screens that do not render anything themselves. </p>
 </blockquote>
-<p>&gt;The registered Routers provide a powerful way to manage transitions between screens or create history trees &amp; wizards.</p>
-<p >The <code><a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a></code>:</p>
+<blockquote class="doxtable">
+<p >&zwj;The registered Routers provide a powerful way to manage transitions between screens or create history trees &amp; wizards. </p>
+</blockquote>
+<p>The <code><a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a></code>:</p>
 <ul>
 <li>is responsible for registering screens and orchestrating the transition from one screen to another via <code>requestScreen()</code> and optional Router(s).</li>
 <li>will call the lifecycle methods defined in <code><a class="el" href="classIManagedScreen.html" title="Interface for a screen that can be managed by ScreenManager. A &#39;Screen&#39; is a combination of the &#39;View...">IManagedScreen</a></code> at the appropriate times.</li>
@@ -60,24 +62,27 @@ ScreenManager</h1>
  <h2><a class="anchor" id="autotoc_md3"></a>
 Registering Screens</h2>
 <p >A Screen must be registered with the <code><a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a></code> before it can be used (managed).</p>
-<p >By default the first screen registerd becomes the initial screen. This can be overridden with <code>setInitialScreenId()</code>.</p>
+<p >By default the first screen registerd becomes the initial screen. This can be overridden with <code>setInitialScreen()</code>.</p>
 <hr  />
  <h1><a class="anchor" id="autotoc_md5"></a>
 Screens</h1>
-<p >All app screens must be implement/derived from the <code><a class="el" href="classIManagedScreen.html" title="Interface for a screen that can be managed by ScreenManager. A &#39;Screen&#39; is a combination of the &#39;View...">IManagedScreen</a></code> interface and managed screens must have a default constructor.</p>
+<p >All app screens must implement/derive from the <code><a class="el" href="classIManagedScreen.html" title="Interface for a screen that can be managed by ScreenManager. A &#39;Screen&#39; is a combination of the &#39;View...">IManagedScreen</a></code> interface and managed screens must have a default constructor.</p>
 <hr  />
 <h2><a class="anchor" id="autotoc_md7"></a>
 ScreenId</h2>
 <p >At registration each <code>IManagerScreen</code> is identified with a <code>ScreenId</code>. This is just a <code>uint8_t</code> (255 screens is enough?) and it is up to the App to ensure these are unique.</p>
-<p ><code>myScreenManager.registerScreen()</code> will return <code>false</code> if a duplicate <code>ScreenId</code> is used.</p>
+<blockquote class="doxtable">
+<p >&zwj;<b>NOTE:</b> A <code>ScreenId</code> <em>cannot</em> be 0 (zero). </p>
+</blockquote>
+<p><code>myScreenManager.registerScreen()</code> will return <code>false</code> if a duplicate <code>ScreenId</code> or <code>0</code> is used.</p>
 <p >Suggested <code>ScreenId</code> implementation:</p>
 <div class="fragment"><div class="line">namespace ScreenIds {</div>
 <div class="line">    // Core Screens</div>
-<div class="line">    constexpr uint16_t Home      = 1;</div>
-<div class="line">    constexpr uint16_t Settings  = 2;</div>
-<div class="line">    constexpr uint16_t Keyboard  = 3;</div>
+<div class="line">    constexpr uint16_t HOME_SCREEN      = 1; //Do not use 0</div>
+<div class="line">    constexpr uint16_t SETTINGS_SCREEN  = 2;</div>
+<div class="line">    constexpr uint16_t KEYBOARD_SCREEN  = 3;</div>
 <div class="line">    // Other Screens start here</div>
-<div class="line">    constexpr uint16_t UserFirst = 100;</div>
+<div class="line">    constexpr uint16_t FIRST_USER_SCREEN = 100;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p >I also use a typedef: <code>using ScreenId = uint16_t;</code></p>
 <hr  />
@@ -96,7 +101,7 @@ Managed</h3>
 <hr  />
 <h2><a class="anchor" id="autotoc_md13"></a>
 State</h2>
-<p >Managed screens should only hold state that is relevant while they are active - this is also recommended for external screens. Screen may occassionally be the'View' of MVC but it is not the 'Model'.</p>
+<p >Managed screens should only hold state that is relevant while they are current - this is also recommended for external screens. A Screen may also be the'View' of MVC but it is not the 'Model'.</p>
 <p >See Screen Access to Your App below.</p>
 <hr  />
 <h2><a class="anchor" id="autotoc_md15"></a>
@@ -127,7 +132,49 @@ Screen Lifecycle</h2>
 <div class="line">      ▼</div>
 <div class="line">    draw()</div>
 </div><!-- fragment --><hr  />
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
+Routers</h1>
+<blockquote class="doxtable">
+<p >&zwj;*** <b>Routers are entirely optional.</b> *** </p>
+</blockquote>
+<p>If your app only requires navigation from one screen to another, then calling <code>myScreenManager.requestScreen(nextScreenId)</code> will do just that - no routers required. By default this will only fail if the requested screen has not been registered or current screen returns <code>false</code> from <code>end()</code> (to force a transition use <code>myScreenManager.requestScreen({TransitionIntentType::Force, nextScreenId});</code>)</p>
+<p >However, it is often necessary to validate the transition from one screen to another and/or to redirect. This <em>can</em> be done within a screen itself but by centralising app logic into one or more routers, it becomes DRYer and more maintainable. Screens do not need to be aware of each other.</p>
+<p >Routers belong to the <em>app</em>. <code><a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a></code> doesn't care what they do internally, it only acts on the return value from <code>resolveScreen()</code>.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md19"></a>
+Router 'Rules'</h2>
+<blockquote class="doxtable">
+<p >&zwj;Routers are evaluated in registration order. A router returning 0 indicates that it has no opinion and evaluation continues. The first router to return a non-zero <code>ScreenId</code> resolves the transition and no subsequent routers are called. </p>
+</blockquote>
+<p>A router's sole <code>resolveScreen()</code> method will receive the current <code>ScreenId</code> and a <code><a class="el" href="structTransitionIntent.html" title="The type of transition and an optional requested ScreenId.">TransitionIntent</a></code> structure and may or may not return <em>an opinion</em>.</p>
+<p >When a router returns <code>0</code> it means "I have no opinion on this transition", when it returns a non-zero value it means "Use this as the next screen ID  and don't look at other routers"</p>
+<p >This means a router can prevent subsequent routers being called by explicitly returning the requested next <code>ScreenId</code> from the <code><a class="el" href="structTransitionIntent.html" title="The type of transition and an optional requested ScreenId.">TransitionIntent</a></code> structure (ie it has an opinion).</p>
+<p >Returning <code>0</code> will not overwrite the requested <code>ScreenId</code> from the <code><a class="el" href="structTransitionIntent.html" title="The type of transition and an optional requested ScreenId.">TransitionIntent</a></code> structure and will allow other Routers to have an opinion.</p>
+<p >To remain on the current screen, the router would return the current <code>ScreenId</code>.</p>
+<hr  />
+ <h2><a class="anchor" id="autotoc_md21"></a>
+Transition Intents</h2>
+<p >What are Transistion Intents? It's just a way of saying "I'd like to go to this screen next but only if there's no router with an adverse opinion on that request."</p>
+<p >The simplest intent is just to just pass a <code>ScreenId</code> to <code>requestScreen()</code> but the <code>TransitionIntentType</code> can be used <em>without</em> a <code>ScreenId</code> to delegate resposiblity for resolving which screen will be the next to Router(s).</p>
+<p >The following <code>TransistionIntentType</code>s are available:</p>
+<ul>
+<li><b>None</b>: No transition, stay on current screen. Can be used to 'clear' a pending intent (before <code>myScreenManger.update()</code> is called).</li>
+<li><b>Auto</b>: The Router decides which screen to transition to (or not).</li>
+<li><b>Next</b>: A Router can decide which screen to transition to (or not) or accept an optionally provided <code>ScreenId</code>.</li>
+<li><b>Back</b>: A Router can decide which screen to transition to (or not) or accept an optionally provided <code>ScreenId</code>. Similar to <code>Next</code> but allows a router to determine the <em>intent</em>.</li>
+<li><b>Init</b>: Request the screen for the initial state of the app. By default this is the first screen registered or set by <code>setInitialScreen()</code>. A Router can have an opinion.</li>
+<li><b>Force</b>: Force a screen change. Behaves like <code>Next</code> (ie Routers can have an opinion). Current screen's <code>end()</code> will be called but the result ignored. Use with caution.</li>
+</ul>
+<blockquote class="doxtable">
+<p >&zwj;Note: Passing just a <code>ScreenId</code> to <code>requestScreen(ScreenId id)</code> will implicitly add a <code>TransitionIntentType</code> of <code>Next</code> to the request. </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md22"></a>
+&lt;/blockquote&gt;</h1>
+<h2><a class="anchor" id="autotoc_md23"></a>
+History and Wizards</h2>
+<p >Individual Routers can maintain a history tree or a 'wizard' flow to use with <code>Auto</code>, <code>Next</code> and <code>Back</code> intents <em>for their own area of interest</em>. If a particular Router has no interest, it has no opinion.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md25"></a>
 A Screen's Access to Your App</h2>
 <p >Most screens will need access to app level resources such as state and inputs so will need an application-level mechanism for locating the application instance. For external screens, this is easy as it can be passed in the constructor but for managed screens a different approach is required.</p>
 <p >Recommendation is to pass a single App object that contains references to all other resources.</p>
@@ -157,43 +204,7 @@ A Screen's Access to Your App</h2>
 <div class="line">    if (!_app)</div>
 <div class="line">        _app = &amp;getApp();</div>
 <div class="line">}</div>
-</div><!-- fragment --><p >I think I prefer the latter and highly recommend creating a <code>BaseAppScreen</code> to encapsulate all the common behaviour.</p>
-<hr  />
-<h1><a class="anchor" id="autotoc_md19"></a>
-Routers</h1>
-<blockquote class="doxtable">
-<p >&zwj;*** <b>Routers are entirely optional.</b> *** </p>
-</blockquote>
-<p>If your app only requires navigation from one screen to another, then calling <code>myScreenManager.requestScreen(nextScreenId)</code> will do just that - no routers required. By default this will only fail if the requested screen has not been registered or current screen returns <code>false</code> from <code>end()</code> (to force a transition use <code>myScreenManager.requestScreen({TransitionIntentType::Force, nextScreenId});</code>)</p>
-<p >However, it is often necessary to validate the transition from one screen to another and/or to redirect. This <em>can</em> be done within a screen itself but by centralising app logic into one or more routers, it becomes DRYer and more maintainable. Screens do not need to be aware of each other.</p>
-<p >Routers belong to the <em>app</em>. <code><a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a></code> doesn't care what they do internally, it only acts on the return value from <code>resolveScreen()</code>.</p>
-<hr  />
-<h2><a class="anchor" id="autotoc_md21"></a>
-Router 'Rules'</h2>
-<blockquote class="doxtable">
-<p >&zwj;Routers are evaluated in registration order. A router returning 0 indicates that it has no opinion and evaluation continues. The first router to return a non-zero <code>ScreenId</code> resolves the transition and no subsequent routers are called. </p>
-</blockquote>
-<p>A router's sole <code>resolveScreen()</code> method will receive the current <code>ScreenId</code> and a <code><a class="el" href="structTransitionIntent.html" title="The type of transition and an optional requested screen name.">TransitionIntent</a></code> structure and may or may not return <em>an opinion</em>.</p>
-<p >When a router returns <code>0</code> it means "I have no opinion on this transition", when it returns a non-zero value it means "Use this as the next screen ID  and don't look at other routers"</p>
-<p >This means a router can prevent subsequent routers being called by explicitly returning the requested next <code>ScreenId</code> from the <code><a class="el" href="structTransitionIntent.html" title="The type of transition and an optional requested screen name.">TransitionIntent</a></code> structure (ie it has an opinion).</p>
-<p >Returning <code>0</code> will not overwrite the requested <code>ScreenId</code> from the <code><a class="el" href="structTransitionIntent.html" title="The type of transition and an optional requested screen name.">TransitionIntent</a></code> structure and will allow other Routers to have an opinion.</p>
-<p >To remain on the current screen, the router would return the current <code>ScreenId</code>.</p>
-<hr  />
- <h2><a class="anchor" id="autotoc_md23"></a>
-Transition Intents</h2>
-<p >The simplest intent is just to just pass a <code>ScreenId</code> to <code>requestScreen()</code> but the <code>ScreenTransitionType</code> can be used <em>without</em> a <code>ScreenId</code> to delegate resposiblity for resolving which screen will be the next to Router(s).</p>
-<ul>
-<li><b>None</b>: No transition, stay on current screen. Can be used to 'clear' a pending intent (before <code>myScreenManger.update()</code> is called).</li>
-<li><b>Auto</b>: The Router decides which screen to transition to (or not).</li>
-<li><b>Next</b>: A Router can decide which screen to transition to (or not) or accept an optionally provided <code>ScreenId</code>.</li>
-<li><b>Back</b>: A Router can decide which screen to transition to (or not) or accept an optionally provided <code>ScreenId</code>. Similar to <code>Next</code> but allows a router to determine the <em>intent</em>.</li>
-<li><b>Init</b>: Request the screen for the initial state of the app. By default this is the first screen registered or set by <code>setInitialScreenId()</code>. A Router can have an opinion.</li>
-<li><b>Force</b>: Force a screen change. Behaves like <code>Next</code> (ie Routers can have an opinion). Current screen's <code>end()</code> will be called but the result ignored. Use with caution.</li>
-</ul>
-<hr  />
- <h2><a class="anchor" id="autotoc_md25"></a>
-History and Wizards</h2>
-<p >Individual Routers can maintain a history tree or a 'wizard' flow to use with <code>Auto</code>, <code>Next</code> and <code>Back</code> intents <em>for their own area of interest</em>. If a particular Router has no interest, it has no opinion. </p>
+</div><!-- fragment --><p >I think I prefer the latter and highly recommend creating a <code>BaseAppScreen</code> to encapsulate all the common behaviour. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

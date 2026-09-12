@@ -19,7 +19,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="fletch-logo64x64.png"/></td>
   <td id="projectalign">
-   <div id="projectname">ScreenManager<span id="projectnumber">&#160;v1.0.0</span>
+   <div id="projectname">ScreenManager<span id="projectnumber">&#160;v1.1.0</span>
    </div>
    <div id="projectbrief">A lightweight C++ library for managing application screens, navigation, transitions and display timing.</div>
   </td>
@@ -61,35 +61,34 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr
 <tr class="memitem:a58076eb43a412eed4484b1b0d217689f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a58076eb43a412eed4484b1b0d217689f">update</a> (uint32_t nowMs)</td></tr>
 <tr class="memdesc:a58076eb43a412eed4484b1b0d217689f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called from your <code>loop()</code>. Checks if a screen transition has been requested and calls current screen's draw() at set FPS.  <a href="classScreenManager.html#a58076eb43a412eed4484b1b0d217689f">More...</a><br /></td></tr>
 <tr class="separator:a58076eb43a412eed4484b1b0d217689f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1d7e9e89ed76ffcac2c6f2336b29868"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aa1d7e9e89ed76ffcac2c6f2336b29868"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classScreenManager.html#aa1d7e9e89ed76ffcac2c6f2336b29868">registerScreen</a> (ScreenId id, T *screen)</td></tr>
-<tr class="memdesc:aa1d7e9e89ed76ffcac2c6f2336b29868"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a screen created externally.  <a href="classScreenManager.html#aa1d7e9e89ed76ffcac2c6f2336b29868">More...</a><br /></td></tr>
-<tr class="separator:aa1d7e9e89ed76ffcac2c6f2336b29868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23e0183a0a9e32e5604f7b7738457622"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a23e0183a0a9e32e5604f7b7738457622">registerScreen</a> (ScreenId id, <a class="el" href="classIManagedScreen.html">IManagedScreen</a> *screen)</td></tr>
+<tr class="memdesc:a23e0183a0a9e32e5604f7b7738457622"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a screen created externally with a unique ID greater than 0.  <a href="classScreenManager.html#a23e0183a0a9e32e5604f7b7738457622">More...</a><br /></td></tr>
+<tr class="separator:a23e0183a0a9e32e5604f7b7738457622"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57b0ecb6258b6abe1bcfa08b9241f128"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a57b0ecb6258b6abe1bcfa08b9241f128"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a57b0ecb6258b6abe1bcfa08b9241f128">registerScreen</a> (ScreenId id)</td></tr>
-<tr class="memdesc:a57b0ecb6258b6abe1bcfa08b9241f128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a managed screen (<a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> will create and delete the screen)  <a href="classScreenManager.html#a57b0ecb6258b6abe1bcfa08b9241f128">More...</a><br /></td></tr>
+<tr class="memdesc:a57b0ecb6258b6abe1bcfa08b9241f128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a managed screen with a unique ID greater than 0 (<a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> will create and delete the screen)  <a href="classScreenManager.html#a57b0ecb6258b6abe1bcfa08b9241f128">More...</a><br /></td></tr>
 <tr class="separator:a57b0ecb6258b6abe1bcfa08b9241f128"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2514e73b594a42f77ce215e4535a3fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#ae2514e73b594a42f77ce215e4535a3fd">setFps</a> (uint8_t fps)</td></tr>
 <tr class="memdesc:ae2514e73b594a42f77ce215e4535a3fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the FPS (Frames Per Second) for draw() to be called (default is 10)  <a href="classScreenManager.html#ae2514e73b594a42f77ce215e4535a3fd">More...</a><br /></td></tr>
 <tr class="separator:ae2514e73b594a42f77ce215e4535a3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25c2a72020133eb39fd9c9739cf9b0cd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a25c2a72020133eb39fd9c9739cf9b0cd">getFps</a> ()</td></tr>
-<tr class="memdesc:a25c2a72020133eb39fd9c9739cf9b0cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the currently set Fps.  <a href="classScreenManager.html#a25c2a72020133eb39fd9c9739cf9b0cd">More...</a><br /></td></tr>
-<tr class="separator:a25c2a72020133eb39fd9c9739cf9b0cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a225158a8ddfe5ba97129f4abb25d906d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a225158a8ddfe5ba97129f4abb25d906d">isCurrent</a> (const ScreenId id)</td></tr>
-<tr class="memdesc:a225158a8ddfe5ba97129f4abb25d906d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if passed id is that of the current screen.  <a href="classScreenManager.html#a225158a8ddfe5ba97129f4abb25d906d">More...</a><br /></td></tr>
-<tr class="separator:a225158a8ddfe5ba97129f4abb25d906d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f9c3d9c096eae784c2d8579242579e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a0f9c3d9c096eae784c2d8579242579e3">isPrevious</a> (ScreenId id)</td></tr>
-<tr class="memdesc:a0f9c3d9c096eae784c2d8579242579e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if passed id is that of the previous screen.  <a href="classScreenManager.html#a0f9c3d9c096eae784c2d8579242579e3">More...</a><br /></td></tr>
-<tr class="separator:a0f9c3d9c096eae784c2d8579242579e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad32f88affd4e02b076508811e901463b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classIManagedScreen.html">IManagedScreen</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#ad32f88affd4e02b076508811e901463b">getCurrent</a> ()</td></tr>
-<tr class="memdesc:ad32f88affd4e02b076508811e901463b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current screen.  <a href="classScreenManager.html#ad32f88affd4e02b076508811e901463b">More...</a><br /></td></tr>
-<tr class="separator:ad32f88affd4e02b076508811e901463b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a35520157589aefe4d9c97e60f45e9d"><td class="memItemLeft" align="right" valign="top">ScreenId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a7a35520157589aefe4d9c97e60f45e9d">getPreviousId</a> ()</td></tr>
-<tr class="memdesc:a7a35520157589aefe4d9c97e60f45e9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the previous screen ID.  <a href="classScreenManager.html#a7a35520157589aefe4d9c97e60f45e9d">More...</a><br /></td></tr>
-<tr class="separator:a7a35520157589aefe4d9c97e60f45e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67b00ab2b2a81794b0d0ae7c96674778"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a67b00ab2b2a81794b0d0ae7c96674778">haveScreen</a> (ScreenId id)</td></tr>
-<tr class="memdesc:a67b00ab2b2a81794b0d0ae7c96674778"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a screen has been added and exists.  <a href="classScreenManager.html#a67b00ab2b2a81794b0d0ae7c96674778">More...</a><br /></td></tr>
-<tr class="separator:a67b00ab2b2a81794b0d0ae7c96674778"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46ea80d48c7a0c0b80e13118e9f47233"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a46ea80d48c7a0c0b80e13118e9f47233">getFps</a> () const</td></tr>
+<tr class="memdesc:a46ea80d48c7a0c0b80e13118e9f47233"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the currently set Fps.  <a href="classScreenManager.html#a46ea80d48c7a0c0b80e13118e9f47233">More...</a><br /></td></tr>
+<tr class="separator:a46ea80d48c7a0c0b80e13118e9f47233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae951cdb3b0f3a47d117e350342f77833"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#ae951cdb3b0f3a47d117e350342f77833">isCurrent</a> (const ScreenId id) const</td></tr>
+<tr class="memdesc:ae951cdb3b0f3a47d117e350342f77833"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if passed id is that of the current screen.  <a href="classScreenManager.html#ae951cdb3b0f3a47d117e350342f77833">More...</a><br /></td></tr>
+<tr class="separator:ae951cdb3b0f3a47d117e350342f77833"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d49970de5783e24e8f62e34a1822cb8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a2d49970de5783e24e8f62e34a1822cb8">isPrevious</a> (const ScreenId id) const</td></tr>
+<tr class="memdesc:a2d49970de5783e24e8f62e34a1822cb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if passed id is that of the previous screen.  <a href="classScreenManager.html#a2d49970de5783e24e8f62e34a1822cb8">More...</a><br /></td></tr>
+<tr class="separator:a2d49970de5783e24e8f62e34a1822cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae011231d66426283fc215431748827b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classIManagedScreen.html">IManagedScreen</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#ae011231d66426283fc215431748827b5">getCurrent</a> () const</td></tr>
+<tr class="memdesc:ae011231d66426283fc215431748827b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current screen or <code>nullptr</code>. <a class="el" href="classScreenManager.html#a58076eb43a412eed4484b1b0d217689f" title="Called from your loop(). Checks if a screen transition has been requested and calls current screen&#39;s ...">ScreenManager::update()</a>` must be called before the initial screen becomes current.  <a href="classScreenManager.html#ae011231d66426283fc215431748827b5">More...</a><br /></td></tr>
+<tr class="separator:ae011231d66426283fc215431748827b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75bb8550ffb0eb9cd25f71efa8575ce1"><td class="memItemLeft" align="right" valign="top">ScreenId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a75bb8550ffb0eb9cd25f71efa8575ce1">getPreviousId</a> () const</td></tr>
+<tr class="memdesc:a75bb8550ffb0eb9cd25f71efa8575ce1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the previous screen ID.  <a href="classScreenManager.html#a75bb8550ffb0eb9cd25f71efa8575ce1">More...</a><br /></td></tr>
+<tr class="separator:a75bb8550ffb0eb9cd25f71efa8575ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6739b0a252d9d5a813899bb9268f0ecb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a6739b0a252d9d5a813899bb9268f0ecb">haveScreen</a> (const ScreenId id) const</td></tr>
+<tr class="memdesc:a6739b0a252d9d5a813899bb9268f0ecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a screen has been added and exists.  <a href="classScreenManager.html#a6739b0a252d9d5a813899bb9268f0ecb">More...</a><br /></td></tr>
+<tr class="separator:a6739b0a252d9d5a813899bb9268f0ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4e2ba42fd7634e1681bb2c0cd0e518e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#af4e2ba42fd7634e1681bb2c0cd0e518e">requestScreen</a> (const ScreenId nextScreen)</td></tr>
 <tr class="memdesc:af4e2ba42fd7634e1681bb2c0cd0e518e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request a transition to a named screen.  <a href="classScreenManager.html#af4e2ba42fd7634e1681bb2c0cd0e518e">More...</a><br /></td></tr>
 <tr class="separator:af4e2ba42fd7634e1681bb2c0cd0e518e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -99,9 +98,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr
 <tr class="memitem:a80bbe7b1de78f7ecd9cedc912b3f31f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#a80bbe7b1de78f7ecd9cedc912b3f31f5">addRouter</a> (<a class="el" href="classScreenRouter.html">ScreenRouter</a> *router)</td></tr>
 <tr class="memdesc:a80bbe7b1de78f7ecd9cedc912b3f31f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new router for screen transitions. Routers are called in the order they are added. First to answer wins.  <a href="classScreenManager.html#a80bbe7b1de78f7ecd9cedc912b3f31f5">More...</a><br /></td></tr>
 <tr class="separator:a80bbe7b1de78f7ecd9cedc912b3f31f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff52b6c383a4fc9916ba931e8a6a8ac3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#aff52b6c383a4fc9916ba931e8a6a8ac3">setInitialScreen</a> (ScreenId id)</td></tr>
-<tr class="memdesc:aff52b6c383a4fc9916ba931e8a6a8ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Initial Screen.  <a href="classScreenManager.html#aff52b6c383a4fc9916ba931e8a6a8ac3">More...</a><br /></td></tr>
-<tr class="separator:aff52b6c383a4fc9916ba931e8a6a8ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceb2735eadb70ab199067d99ff1c773e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScreenManager.html#aceb2735eadb70ab199067d99ff1c773e">setInitialScreen</a> (const ScreenId id)</td></tr>
+<tr class="memdesc:aceb2735eadb70ab199067d99ff1c773e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Initial Screen.  <a href="classScreenManager.html#aceb2735eadb70ab199067d99ff1c773e">More...</a><br /></td></tr>
+<tr class="separator:aceb2735eadb70ab199067d99ff1c773e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a80bbe7b1de78f7ecd9cedc912b3f31f5" name="a80bbe7b1de78f7ecd9cedc912b3f31f5"></a>
@@ -130,8 +129,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr
 
 </div>
 </div>
-<a id="ad32f88affd4e02b076508811e901463b" name="ad32f88affd4e02b076508811e901463b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad32f88affd4e02b076508811e901463b">&#9670;&nbsp;</a></span>getCurrent()</h2>
+<a id="ae011231d66426283fc215431748827b5" name="ae011231d66426283fc215431748827b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae011231d66426283fc215431748827b5">&#9670;&nbsp;</a></span>getCurrent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -140,18 +139,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr
           <td class="memname"><a class="el" href="classIManagedScreen.html">IManagedScreen</a> * ScreenManager::getCurrent </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the current screen. </p>
+<p>Get the current screen or <code>nullptr</code>. <a class="el" href="classScreenManager.html#a58076eb43a412eed4484b1b0d217689f" title="Called from your loop(). Checks if a screen transition has been requested and calls current screen&#39;s ...">ScreenManager::update()</a>` must be called before the initial screen becomes current. </p>
 <dl class="section return"><dt>Returns</dt><dd>IManagedScreen* or nullptr </dd></dl>
 
 </div>
 </div>
-<a id="a25c2a72020133eb39fd9c9739cf9b0cd" name="a25c2a72020133eb39fd9c9739cf9b0cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25c2a72020133eb39fd9c9739cf9b0cd">&#9670;&nbsp;</a></span>getFps()</h2>
+<a id="a46ea80d48c7a0c0b80e13118e9f47233" name="a46ea80d48c7a0c0b80e13118e9f47233"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46ea80d48c7a0c0b80e13118e9f47233">&#9670;&nbsp;</a></span>getFps()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +162,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr
           <td class="memname">uint8_t ScreenManager::getFps </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -178,8 +177,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr
 
 </div>
 </div>
-<a id="a7a35520157589aefe4d9c97e60f45e9d" name="a7a35520157589aefe4d9c97e60f45e9d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a35520157589aefe4d9c97e60f45e9d">&#9670;&nbsp;</a></span>getPreviousId()</h2>
+<a id="a75bb8550ffb0eb9cd25f71efa8575ce1" name="a75bb8550ffb0eb9cd25f71efa8575ce1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75bb8550ffb0eb9cd25f71efa8575ce1">&#9670;&nbsp;</a></span>getPreviousId()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,7 +187,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr
           <td class="memname">ScreenId ScreenManager::getPreviousId </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -198,8 +197,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr
 
 </div>
 </div>
-<a id="a67b00ab2b2a81794b0d0ae7c96674778" name="a67b00ab2b2a81794b0d0ae7c96674778"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67b00ab2b2a81794b0d0ae7c96674778">&#9670;&nbsp;</a></span>haveScreen()</h2>
+<a id="a6739b0a252d9d5a813899bb9268f0ecb" name="a6739b0a252d9d5a813899bb9268f0ecb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6739b0a252d9d5a813899bb9268f0ecb">&#9670;&nbsp;</a></span>haveScreen()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -207,9 +206,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr
         <tr>
           <td class="memname">bool ScreenManager::haveScreen </td>
           <td>(</td>
-          <td class="paramtype">ScreenId&#160;</td>
+          <td class="paramtype">const ScreenId&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -227,8 +226,8 @@ false Screen does not exist/ </dd></dl>
 
 </div>
 </div>
-<a id="a225158a8ddfe5ba97129f4abb25d906d" name="a225158a8ddfe5ba97129f4abb25d906d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a225158a8ddfe5ba97129f4abb25d906d">&#9670;&nbsp;</a></span>isCurrent()</h2>
+<a id="ae951cdb3b0f3a47d117e350342f77833" name="ae951cdb3b0f3a47d117e350342f77833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae951cdb3b0f3a47d117e350342f77833">&#9670;&nbsp;</a></span>isCurrent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -238,7 +237,7 @@ false Screen does not exist/ </dd></dl>
           <td>(</td>
           <td class="paramtype">const ScreenId&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -256,8 +255,8 @@ false </dd></dl>
 
 </div>
 </div>
-<a id="a0f9c3d9c096eae784c2d8579242579e3" name="a0f9c3d9c096eae784c2d8579242579e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f9c3d9c096eae784c2d8579242579e3">&#9670;&nbsp;</a></span>isPrevious()</h2>
+<a id="a2d49970de5783e24e8f62e34a1822cb8" name="a2d49970de5783e24e8f62e34a1822cb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d49970de5783e24e8f62e34a1822cb8">&#9670;&nbsp;</a></span>isPrevious()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -265,9 +264,9 @@ false </dd></dl>
         <tr>
           <td class="memname">bool ScreenManager::isPrevious </td>
           <td>(</td>
-          <td class="paramtype">ScreenId&#160;</td>
+          <td class="paramtype">const ScreenId&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -311,7 +310,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Register a managed screen (<a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> will create and delete the screen) </p>
+<p>Register a managed screen with a unique ID greater than 0 (<a class="el" href="classScreenManager.html" title="The core class that handles registration, transitions and of course, calling the screen&#39;s draw() meth...">ScreenManager</a> will create and delete the screen) </p>
 <p >Usage: <code>screenManager.registerScreen&lt;SettingsScreen&gt;(20);</code></p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -321,20 +320,18 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>A uint8_t used to identify this screen </td></tr>
+    <tr><td class="paramname">id</td><td>A <code>uint8_t</code> used to identify this screen. <b>Must be &gt; 0</b> </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="aa1d7e9e89ed76ffcac2c6f2336b29868" name="aa1d7e9e89ed76ffcac2c6f2336b29868"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1d7e9e89ed76ffcac2c6f2336b29868">&#9670;&nbsp;</a></span>registerScreen() <span class="overload">[2/2]</span></h2>
+<a id="a23e0183a0a9e32e5604f7b7738457622" name="a23e0183a0a9e32e5604f7b7738457622"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23e0183a0a9e32e5604f7b7738457622">&#9670;&nbsp;</a></span>registerScreen() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -348,7 +345,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T *&#160;</td>
+          <td class="paramtype"><a class="el" href="classIManagedScreen.html">IManagedScreen</a> *&#160;</td>
           <td class="paramname"><em>screen</em>&#160;</td>
         </tr>
         <tr>
@@ -364,18 +361,12 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Register a screen created externally. </p>
-<p >Usage: <code>screenManager.registerScreen(&amp;home, 11);</code></p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">T</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Register a screen created externally with a unique ID greater than 0. </p>
+<p >Usage: <code>screenManager.registerScreen(11, &amp;home);</code></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">id</td><td>A ScreenId (<code>uint8_t</code>) used to identify this screen. <b>Must be &gt; 0</b> </td></tr>
     <tr><td class="paramname">screen</td><td></td></tr>
-    <tr><td class="paramname">id</td><td>A uint8_t used to identify this screen </td></tr>
   </table>
   </dd>
 </dl>
@@ -463,15 +454,15 @@ template&lt;typename T &gt; </div>
 <p>Set the FPS (Frames Per Second) for draw() to be called (default is 10) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fps</td><td>1-255 FPS. 0 means <code><a class="el" href="classIManagedScreen.html#a0ad4d18436333798f0dcb2330e68b0c1" title="Called at defined FPS only whan screen is active.">IManagedScreen::draw()</a></code> will never be called. </td></tr>
+    <tr><td class="paramname">fps</td><td>1-250 FPS. 0 means <code><a class="el" href="classIManagedScreen.html#a0ad4d18436333798f0dcb2330e68b0c1" title="Called at defined FPS only whan screen is active.">IManagedScreen::draw()</a></code> will never be called. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="aff52b6c383a4fc9916ba931e8a6a8ac3" name="aff52b6c383a4fc9916ba931e8a6a8ac3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff52b6c383a4fc9916ba931e8a6a8ac3">&#9670;&nbsp;</a></span>setInitialScreen()</h2>
+<a id="aceb2735eadb70ab199067d99ff1c773e" name="aceb2735eadb70ab199067d99ff1c773e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceb2735eadb70ab199067d99ff1c773e">&#9670;&nbsp;</a></span>setInitialScreen()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -479,7 +470,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">bool ScreenManager::setInitialScreen </td>
           <td>(</td>
-          <td class="paramtype">ScreenId&#160;</td>
+          <td class="paramtype">const ScreenId&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -517,7 +508,9 @@ false Initial screen not set (is not a registered screen) </dd></dl>
 </div><div class="memdoc">
 
 <p>Called from your <code>loop()</code>. Checks if a screen transition has been requested and calls current screen's draw() at set FPS. </p>
-<p >Receives a timer value - in the Arduino Framework this would be <code>millis()</code>.</p>
+<p >Receives a timer value - in the Arduino Framework this would be <code>millis()</code>. </p><blockquote class="doxtable">
+<p >&zwj;Must be called before trying to access <code>currentScreen()</code> </p>
+</blockquote>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nowMs</td><td>A timer value used to determine when <code>draw()</code> is called (based on the <code><a class="el" href="classScreenManager.html#ae2514e73b594a42f77ce215e4535a3fd" title="Set the FPS (Frames Per Second) for draw() to be called (default is 10)">setFps()</a></code>) </td></tr>
