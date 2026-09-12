@@ -30,7 +30,7 @@ Many embedded applications consist of a collection of independent screens but as
 
 `ScreenManager` centralises that responsibility.
 
-Screens simply request a transition. The (optional) Routers registered with  `ScreenManager` decide where to go, whether the transition is allowed, and ensures the appropriate screen is started.
+Screens simply request a transition. The *optional* Routers registered with  `ScreenManager` can decide whether the transition is allowed or if it should be redirected and ensures the `ScreenManager` starts the appropriate screen. A Router can also decide it has 'no opinion' so the request may proceed or be forwarded to the next registered Router.
 
 This keeps screens independent and makes navigation easier to modify, test and maintain.
 
@@ -156,7 +156,7 @@ Or search and install from PlatformIO's Library Manager.
 
 For further information, please see the [full Doxygen generated API docs](https://stutchbury.github.io/ScreenManager/docs/api/) which includes the Developer Notes.
 
-Feedback, [bug reports](https://github.com/Stutchbury/ScreenManager/issues) and pull requests are very welcome or chat on [Discord](https://discord.gg/GDcEcWPKKm) if you have any questions.
+Feedback, [bug reports](https://github.com/Stutchbury/ScreenManager/issues) and pull requests are very welcome or if you have any questions, feel free to chat on [Discord](https://discord.gg/GDcEcWPKKm) ![Discord Logo](images/Discord-Symbol-Blurple-36x27.png) 
 
 
 ---
@@ -199,7 +199,11 @@ manager.requestScreen({ TransitionIntentType::Back });
 
 ## Design Principles
 
-`ScreenManager` has:
+
+
+`ScreenManager` originally started as part of the [InputEventsTouchUI library](https://stutchbury.com/s/InputEventsTouchUI) but no longer has any dependecy on it (or any othre library/framework). It does still work very well with InputEventsTouchUI, so suggest you try it out!
+
+The goals of this library are:
 
 * Small memory footprint.
 * Predictable execution.
@@ -209,15 +213,16 @@ manager.requestScreen({ TransitionIntentType::Back });
 * Suitable for AVR, STM32, ESP32, RP2040, Teensy and other platforms.
 * Straightforward to unit test.
 * Minimal public API.
+* Not impose anything on your codebase other than a single, simple interface.
 
 ## Architecture
 
 `ScreenManager` deliberately separates responsibilities.
 
-* **Application**  -  creates and/or registers Screens and can requests transitions.
+* **Your Application**  -  creates and/or registers Screens and can requests transitions.
 * **ScreenManager**  -  manages registration, navigation and Screen lifetime.
-* **Screens**  -  implement application behaviour and can request transitions.
-* **Routers**  -  optionally influence navigation decisions.
+* **Your Screens**  -  implement application behaviour and can request transitions.
+* **Your Routers**  -  optionally influence navigation decisions.
 
 Keeping these responsibilities separate allows implemention behaviour within a Screen while `ScreenManager` coordinates the overall application flow.
 
